@@ -21,6 +21,34 @@ Raw JSON data is processed daily by parsing out timestamped events and storing t
 
 FIXME: csv file
 
+1. Explore the data:
+
+Show jobs over time for all users and by user
+Show age of users over time
+Show jobs that didn't complete
+
+2. Use Spark SQL to transform event data into metrics:
+
+Utilization - active jobs
+
+3. Use Spark to aggregate historical data within a window 
+
+Days of active use within the last 30 days
+Days since active use in the last 30 days
+Jobs with no finish after 5 hours in last 3 days
+
+4. Simple anamoly detection on tranformed metrics using graphite
+
+5. What if we don't want holt-winters?  Use spark-ts package to calculate the anaomaly metric
+
+6. Scale out 
+
+What if our service become extremely popular or we want to start processing data for multiple services on our platform?  We can use spark to scale out by partitioning our data across multiple spark workers.
+
+7. Streams 
+
+What if we want to decrease the time interval that we use to process data from daily down to every minute?
+
 ### 
 
 ## Scenario 2: Log monitoring
