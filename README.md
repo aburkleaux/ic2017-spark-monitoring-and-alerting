@@ -7,6 +7,20 @@ This tutorial will demonstrate using Apache Spark in monitoring and alerting wor
 
 While we will be using some analytic libraries to forecast or predict values for our metrics, the details of forecasting and predictive analytics are beyond the scope of this lab.  We hope that you will take away a better feel for how these techniques can be used in a fairly generic series of data processing tasks in the moniroing and alerting workflow.
 
+**Tools:**
+
+Apache Spark
+Zeppelin Notebooks
+Graphite
+Grafana
+Docker - for setting up the environment
+
+**Setup:***
+
+got to github
+get the container
+run the container
+
 ## Scenario 1: Customer Success
 
 Prashant is a Customer Success Manager for the mini-spark service.  He wants to monitor the usage patterns of service users in order to identify touchpoints to nurture the customer relationship. Specifically, he wants to be notified whenever:
@@ -25,35 +39,33 @@ Raw JSON data is processed daily by parsing out timestamped events and storing t
 
 FIXME: csv file
 
-1. Explore the data:
+### Explore the data:
 
 Show jobs over time for all users and by user
 Show age of users over time
 Show jobs that didn't complete
 
-2. Use Spark SQL to transform event data into metrics:
+### Use Spark SQL to transform event data into metrics:
 
 Utilization - active jobs
 
-3. Use Spark to aggregate historical data within a window 
+### Use Spark to aggregate historical data within a window 
 
 Days of active use within the last 30 days
 Days since active use in the last 30 days
 Jobs with no finish after 5 hours in last 3 days
 
-4. Simple anamoly detection on tranformed metrics using graphite holt-winters forecasting
+### Simple anamoly detection on tranformed metrics using graphite holt-winters forecasting
 
-5. What if we don't want holt-winters?  Use spark-ts package to calculate the anaomaly metric
+### What if we don't want holt-winters?  Use spark-ts package to calculate the anaomaly metric
 
-6. Scale out 
+### Scale out 
 
 What if our service become extremely popular or we want to start processing data for multiple services on our platform?  We can use spark to scale out by partitioning our data across multiple spark workers.
 
-7. Streams 
+### Speed up with Streams 
 
 What if we want to decrease the time interval that we use to process data from daily down to every minute?
-
-### 
 
 ## Scenario 2: Log monitoring
 
@@ -63,18 +75,18 @@ Annette is an Operations Engineer for the mini-spark service.  She knows that of
 
 All of the log data for the service passes through parsers which transform the data into the following format.  
 
-1. Explore the data:
+### Explore the data:
 
 
-2. Use Spark SQL to transform event data into metrics:
+### Use Spark SQL to transform event data into metrics:
 
 Calculates the logging rate at fixed intervals.
 
-3. Set fixed upper and lower bounds - visualize in grafana
+### Set fixed upper and lower bounds - visualize in grafana
 
-4. Do anomaly detection using holt-winters in graphite
+### Do anomaly detection using holt-winters in graphite
 
-5. Do anomlaly detection using ARIMA in spark-ts
+### Do anomlaly detection using ARIMA in spark-ts
 
 
 
