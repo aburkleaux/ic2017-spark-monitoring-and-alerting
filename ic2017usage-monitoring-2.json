@@ -7,7 +7,7 @@
     "gnetId": null,
     "graphTooltip": 0,
     "hideControls": false,
-    "id": 7,
+    "id": null,
     "links": [ ],
     "refresh": false,
     "rows": [
@@ -18,7 +18,7 @@
                 {
                     "aliasColors": { },
                     "bars": false,
-                    "datasource": null,
+                    "datasource": "ic2017",
                     "description": "The shaded area is the range of predicted values for the myservice jobcount over time.  \n\nThe green line is the actual value.",
                     "fill": 0,
                     "id": 1,
@@ -115,7 +115,7 @@
                 {
                     "aliasColors": { },
                     "bars": false,
-                    "datasource": null,
+                    "datasource": "ic2017",
                     "description": "This is the degree of deviation of the actual value from the predicted value of jobcount over time.\n\nWhen the deviation is negative, jobcount is less than expected.  When the deviation is positive, jobcount is more than expected.",
                     "fill": 1,
                     "id": 4,
@@ -266,6 +266,6 @@
     },
     "timezone": "browser",
     "title": "ic2017-grafana-sample-2",
-    "version": 0
+    "version": 1
 
 }
