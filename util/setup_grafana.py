@@ -1,15 +1,16 @@
 #!/usr/bin/env python
 
 import requests
-import requests
 import json
 
-GRAFANA_SERVER = '169.46.172.3'
+GRAFANA_SERVER = 'localhost'
 GRAFANA_PORT = '3000'
 
 if __name__ == '__main__':
 
-    datasource_json = {'name':'ic2017-1','type':'graphite','url':'http://graphite','access':'proxy','basicAuth':False, 'isDefault':True}
+    create_dashboard = False
+
+    datasource_json = {'name':'ic2017','type':'graphite','url':'http://localhost:80','access':'direct','basicAuth':False, 'isDefault':True}
     request = 'http://'+GRAFANA_SERVER+':'+GRAFANA_PORT+'/api/datasources'
 
     print ('Creating graphite datasource in grafana '+request+str(datasource_json) )
@@ -22,14 +23,21 @@ if __name__ == '__main__':
 
     request = 'http://'+GRAFANA_SERVER+':'+GRAFANA_PORT+'/api/dashboards/db'
     FILE = './ic2017-sample-dashboard.json'
+ 
 
-    print ('Creating dashboard in grafana '+FILE)
-    try:
-        json_data = open(FILE)
-        d = json.load(json_data)
-        r = requests.post(request, json=d) 
-        print ('Create dashboard in grafana response: '+str(r))
-    except Exception as err:
-        print ('Error dashboard in grafana!!!'+err)
+    if create_dashboard:
+        print ('Creating dashboard in grafana '+FILE)
+        try:
+            json_data = open(FILE)
+            d = json.load(json_data)
+            # this works on galileo but not on VM env
+            r = requests.post(request, json=d) 
+            # this get http response 422
+            #r = requests.post(request, data=d")
+            # this gets http response 409
+            #r = requests.post(request, data=d, headers="Content-Type: application/json")
 
+            print ('Create dashboard in grafana response: '+str(r))
+        except Exception as err:
+            print ('Error dashboard in grafana!!!'+err)
 
