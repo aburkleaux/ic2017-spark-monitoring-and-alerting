@@ -1,5 +1,5 @@
+{ "dashboard": 
 {
-
     "annotations": {
         "list": [ ]
     },
@@ -268,4 +268,4 @@
     "title": "ic2017-grafana-sample-2",
     "version": 1
 
-}
+},"overwrite": true}
