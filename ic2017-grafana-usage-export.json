@@ -13,8 +13,17 @@
     "rows": [
         {
             "collapse": false,
-            "height": "300px",
+            "height": "250px",
             "panels": [
+                {
+                    "content": "# Forecasting usage over time\n\nThese graphs show the Holt-Winters forecast over time for the different metrics we calculated.  Each forecast has two graphs:\n\n1. **Forecast and actual value for the metric.**  The forecast is the shaded area in the background which is called the _confidence bands_ for the forecasts.  Actual values that fall inside the confidence bands are considered normal.\n2. **Degree of Aberration of the actual value vs. the predicted value.**  We can set alert thresholds on the Aberration value to detect anomalies in the metric.  Setting alerts on Aberration from a predicted curve allows us to account for the fact that normal usage can vary over time.  The red shaded area of the Aberration graphs help to visualize when alerts would be triggered.  \n\nThe column on the *left* hand side is for all usage of the service.  While the forecast on the *right* is usage for a specific user and metric.  You can select different users and metrics by using the drop down menu at the top of the dashboard.",
+                    "id": 7,
+                    "links": [ ],
+                    "mode": "markdown",
+                    "span": 12,
+                    "title": "",
+                    "type": "text"
+                },
                 {
                     "aliasColors": { },
                     "bars": false,
@@ -50,7 +59,7 @@
                             "lines": false
                         }
                     ],
-                    "span": 12,
+                    "span": 6,
                     "stack": false,
                     "steppedLine": false,
                     "targets": [
@@ -78,7 +87,7 @@
                     "thresholds": [ ],
                     "timeFrom": null,
                     "timeShift": null,
-                    "title": "Holt-Winters Forecast for myservice usage (jobcount)",
+                    "title": "Holt-Winters Forecast (jobcount)",
                     "tooltip": {
                         "shared": false,
                         "sort": 0,
@@ -116,6 +125,99 @@
                     "aliasColors": { },
                     "bars": false,
                     "datasource": null,
+                    "fill": 0,
+                    "id": 5,
+                    "legend": {
+                        "avg": false,
+                        "current": false,
+                        "max": false,
+                        "min": false,
+                        "show": false,
+                        "total": false,
+                        "values": false
+                    },
+                    "lines": true,
+                    "linewidth": 1,
+                    "links": [ ],
+                    "nullPointMode": "connected",
+                    "percentage": false,
+                    "pointradius": 5,
+                    "points": false,
+                    "renderer": "flot",
+                    "seriesOverrides": [
+                        {
+                            "alias": "holtWintersConfidenceUpper(keepLastValue(ic2017.usage.u-Michelle.jobcount))",
+                            "fillBelowTo": "holtWintersConfidenceLower(keepLastValue(ic2017.usage.u-Michelle.jobcount))",
+                            "lines": false
+                        },
+                        {
+                            "alias": "ic2017.usage.u-Michelle.jobcount"
+                        }
+                    ],
+                    "span": 6,
+                    "stack": false,
+                    "steppedLine": false,
+                    "targets": [
+                        {
+                            "refId": "A",
+                            "target": "ic2017.usage.$user.$metric"
+                        },
+                        {
+                            "refId": "B",
+                            "target": "holtWintersConfidenceBands(keepLastValue(ic2017.usage.$user.$metric, 100), 10)"
+                        }
+                    ],
+                    "thresholds": [ ],
+                    "timeFrom": null,
+                    "timeShift": null,
+                    "title": "Holt-Winter Forecast ($metric) for user $user",
+                    "tooltip": {
+                        "shared": true,
+                        "sort": 0,
+                        "value_type": "individual"
+                    },
+                    "type": "graph",
+                    "xaxis": {
+                        "mode": "time",
+                        "name": null,
+                        "show": true,
+                        "values": [ ]
+                    },
+                    "yaxes": [
+                        {
+                            "format": "short",
+                            "label": "",
+                            "logBase": 1,
+                            "max": null,
+                            "min": null,
+                            "show": true
+                        },
+                        {
+                            "format": "short",
+                            "label": null,
+                            "logBase": 1,
+                            "max": null,
+                            "min": null,
+                            "show": true
+                        }
+                    ]
+                }
+            ],
+            "repeat": null,
+            "repeatIteration": null,
+            "repeatRowId": null,
+            "showTitle": false,
+            "title": "Dashboard Row",
+            "titleSize": "h6"
+        },
+        {
+            "collapse": false,
+            "height": 322,
+            "panels": [
+                {
+                    "aliasColors": { },
+                    "bars": false,
+                    "datasource": null,
                     "description": "This is the degree of deviation of the actual value from the predicted value of jobcount over time.\n\nWhen the deviation is negative, jobcount is less than expected.  When the deviation is positive, jobcount is more than expected.",
                     "fill": 1,
                     "id": 4,
@@ -147,7 +249,7 @@
                             "lines": false
                         }
                     ],
-                    "span": 12,
+                    "span": 6,
                     "stack": false,
                     "steppedLine": false,
                     "targets": [
@@ -186,7 +288,7 @@
                     ],
                     "timeFrom": null,
                     "timeShift": null,
-                    "title": "Holt-Winters Aberration for myservice jobcount  (alert threshold = +-25)",
+                    "title": "Holt-Winters Aberration (jobcount) for service (alert threshold = +-25)",
                     "tooltip": {
                         "shared": true,
                         "sort": 2,
@@ -219,6 +321,103 @@
                             "show": false
                         }
                     ]
+                },
+                {
+                    "aliasColors": { },
+                    "bars": false,
+                    "datasource": null,
+                    "fill": 0,
+                    "id": 6,
+                    "legend": {
+                        "avg": false,
+                        "current": false,
+                        "max": false,
+                        "min": false,
+                        "show": false,
+                        "total": false,
+                        "values": false
+                    },
+                    "lines": true,
+                    "linewidth": 1,
+                    "links": [ ],
+                    "nullPointMode": "connected",
+                    "percentage": false,
+                    "pointradius": 5,
+                    "points": false,
+                    "renderer": "flot",
+                    "seriesOverrides": [
+                        {
+                            "alias": "holtWintersConfidenceUpper(keepLastValue(ic2017.usage.u-Michelle.jobcount))",
+                            "fillBelowTo": "holtWintersConfidenceLower(keepLastValue(ic2017.usage.u-Michelle.jobcount))",
+                            "lines": false
+                        },
+                        {
+                            "alias": "ic2017.usage.u-Michelle.jobcount"
+                        }
+                    ],
+                    "span": 6,
+                    "stack": false,
+                    "steppedLine": false,
+                    "targets": [
+                        {
+                            "hide": true,
+                            "refId": "A",
+                            "target": "ic2017.usage.u-Michelle.jobcount"
+                        },
+                        {
+                            "refId": "B",
+                            "target": "holtWintersAberration(keepLastValue(ic2017.usage.u-Michelle.jobcount, 100), 5)"
+                        }
+                    ],
+                    "thresholds": [
+                        {
+                            "colorMode": "critical",
+                            "fill": true,
+                            "line": false,
+                            "op": "gt",
+                            "value": 5
+                        },
+                        {
+                            "colorMode": "critical",
+                            "fill": true,
+                            "line": false,
+                            "op": "lt",
+                            "value": -5
+                        }
+                    ],
+                    "timeFrom": null,
+                    "timeShift": null,
+                    "title": "Holt-Winters Aberration (jobcount) user u-Michelle (threshold = +-5)",
+                    "tooltip": {
+                        "shared": true,
+                        "sort": 0,
+                        "value_type": "individual"
+                    },
+                    "type": "graph",
+                    "xaxis": {
+                        "mode": "time",
+                        "name": null,
+                        "show": true,
+                        "values": [ ]
+                    },
+                    "yaxes": [
+                        {
+                            "format": "short",
+                            "label": "jobcount",
+                            "logBase": 1,
+                            "max": null,
+                            "min": null,
+                            "show": true
+                        },
+                        {
+                            "format": "short",
+                            "label": null,
+                            "logBase": 1,
+                            "max": null,
+                            "min": null,
+                            "show": true
+                        }
+                    ]
                 }
             ],
             "repeat": null,
@@ -233,7 +432,78 @@
     "style": "dark",
     "tags": [ ],
     "templating": {
-        "list": [ ]
+        "list": [
+            {
+                "allValue": null,
+                "current": {
+                    "tags": [ ],
+                    "text": "u-Michelle",
+                    "value": "u-Michelle"
+                },
+                "datasource": "ic2017",
+                "hide": 0,
+                "includeAll": false,
+                "label": null,
+                "multi": false,
+                "name": "user",
+                "options": [
+                    {
+                        "selected": true,
+                        "text": "u-Michelle",
+                        "value": "u-Michelle"
+                    }
+                ],
+                "query": "ic2017.usage.*",
+                "refresh": 0,
+                "regex": "",
+                "sort": 0,
+                "tagValuesQuery": "",
+                "tags": [ ],
+                "tagsQuery": "",
+                "type": "query",
+                "useTags": false
+            },
+            {
+                "allValue": null,
+                "current": {
+                    "tags": [ ],
+                    "text": "jobcount",
+                    "value": "jobcount"
+                },
+                "datasource": "ic2017",
+                "hide": 0,
+                "includeAll": false,
+                "label": null,
+                "multi": false,
+                "name": "metric",
+                "options": [
+                    {
+                        "selected": false,
+                        "text": "avg_utilization",
+                        "value": "avg_utilization"
+                    },
+                    {
+                        "selected": true,
+                        "text": "jobcount",
+                        "value": "jobcount"
+                    },
+                    {
+                        "selected": false,
+                        "text": "weekly_liveness",
+                        "value": "weekly_liveness"
+                    }
+                ],
+                "query": "ic2017.usage.*.*",
+                "refresh": 0,
+                "regex": "",
+                "sort": 0,
+                "tagValuesQuery": "",
+                "tags": [ ],
+                "tagsQuery": "",
+                "type": "query",
+                "useTags": false
+            }
+        ]
     },
     "time": {
         "from": "now-60d",
@@ -266,7 +536,6 @@
     },
     "timezone": "browser",
     "title": "ic2017-grafana-usage",
-    "version": 0
+    "version": 2
 
 }
-
