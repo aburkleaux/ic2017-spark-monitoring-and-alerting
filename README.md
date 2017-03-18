@@ -24,3 +24,13 @@ Prashant is a Customer Success Manager for the (fictional) CloudKat service on B
 * a users utilization of the service approaches the limit for their current plan
 * a user has a change in usage pattern that decreases the use of their service
 * a user has actively used the service for certain number of days
+
+**Data Flow for analytic processing**
+
+We'll be showing tranforming timestamped event data using Spark in a Zeppelin notebook and creating Holt-Winters Forecasts using graphite and grafana.  THe general analytic workflow this might fit into looks like this:
+
+![alerts with Spark](https://github.com/aburkleaux/ic2017-spark-monitoring-and-alerting/blob/master/images/gdataflow.png "Dataflow")
+
+Data is ingested through a log management system such as Logstash in and ELK stack and written to a presisitent message BUS such as Kafka.  Event data is processed from the stream to be stored or passed to downstream processiong.  One the data are persisited, it can be accessed by batch jobs or applications.  Some batch jobs may create results that will also be persisted in the data store.  We will show an example of such a job in the notebook.
+
+Spark can serve the processing engine for streaming an stored data from every datasource.
