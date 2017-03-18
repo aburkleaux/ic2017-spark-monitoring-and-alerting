@@ -11,4 +11,4 @@ gunzip faker-user-jobs.csv.gz
 cp faker-user-jobs.csv /shared/data  
 
 echo "Configuring grafana"
-curl 'http://localhost:3000/api/datasources' -X POST -H 'Content-Type: application/json;charset=UTF-8' --data-binary '{"name":"ic2017","type":"graphite","url":"http://graphite:80","access":"direct","isDefault":true}'
+curl 'http://localhost:3000/api/datasources' -X POST -H 'Content-Type: application/json;charset=UTF-8' --data-binary '{"name":"ic2017","type":"graphite","url":"http://localhost:80","access":"proxy","isDefault":true}'
