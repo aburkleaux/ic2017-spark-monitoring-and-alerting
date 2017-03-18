@@ -1,95 +1,27 @@
-# 9005 Demonstrate Monitoring, Alerting and Predictive analytics for IBM Bluemix Cloud Services using Spark
+# Hands-on Lab Session 9005
+## Demonstrate Monitoring, Alerting and Predictive analytics for IBM Bluemix Cloud Services using Spark
 
 ![alerts with Spark](https://github.com/aburkleaux/ic2017-spark-monitoring-and-alerting/blob/master/images/g-forecasts.png "Metrics with Spark")
 
-This tutorial will demonstrate using Apache Spark in monitoring and alerting workflows for a cloud SaaS.  At the end of this tutorial you will be able to:
-* understand a typical monitoring and alerting workflow
-* understand how some of the features of Spark can fit into monitoring and analytic workflows
-* how advanced analytic techniques such as timeseries forecasting can be used for monitoring and alerting
+**Overview**
 
-While we will be using some analytic libraries to forecast or predict values for our metrics, the details of forecasting and predictive analytics are beyond the scope of this lab.  We hope that you will take away a better feel for how these techniques can be used in a fairly generic series of data processing tasks in the moniroing and alerting workflow.
+This lab will take you through a simplified scenario for monitoring usage of a cloud service.  It will demonstrate the workflow using Spark to tranform any kind of timestamped data into metrics. We will also look at how the metrics can be used as the basis for creating alerts on usage and forecasting usage behavior for our service.
 
-**Tools:**
+**Tools Used**
 
-Apache Spark
-Zeppelin Notebooks
-Graphite
-Grafana
-Docker - for setting up the environment
+* **Apache Zeppelin** - is a web-based notebook that enables interactive data analytics. You can make beautiful data-driven, interactive and collaborative documents with SQL, Scala and more. Official Website for Apache Zeppelin is http://zeppelin.apache.org [ref](zeppelin-project.org/)
 
-**Setup:***
+* **Spark** is a fast, in-memory data processing engine with elegant and expressive development APIs to allow data workers to efficiently execute streaming, machine learning or SQL workloads that require fast iterative access to datasets. [ref](spark.apache.org/)
 
-got to github
-get the container
-run the container
+* **Graphite** is a highly scalable real-time graphing system. As a user, you write an application that collects numeric time-series data that you are interested in graphing, and send it to Graphite's processing backend, carbon, which stores the data in Graphite's specialized database. [ref](graphite.wikidot.com/faq)
 
-## Scenario 1: Customer Success
+* **Grafana** is an open source metric analytics & visualization suite. It is most commonly used for visualizing time series data for infrastructure and application analytics but many use it in other domains including industrial sensors, home automation, weather, and process control. [ref](https://docs.grafana.org/)
 
-Prashant is a Customer Success Manager for the mini-spark service.  He wants to monitor the usage patterns of service users in order to identify touchpoints to nurture the customer relationship. Specifically, he wants to be notified whenever:
+**Scenario: Monitoring usage of a Bluemix Service**
+
+Prashant is a Customer Success Manager for the (fictional) CloudKat service on Bluemix.  He wants to monitor the usage patterns of service users in order to identify touchpoints to nurture the customer relationship. Specifically, he wants to be notified whenever:
+
 * a users utilization of the service approaches the limit for their current plan
 * a user has a change in usage pattern that decreases the use of their service
 * a user has actively used the service for certain number of days
 * a user has experienced a high number of problems using the service
-
-### The data:
-
-Users of the service are billed per job run on the service.  Job counts are kept by the metering micro-service and sent to the billing system on a regular basis.  The metering service also logs more detailed job information in case they ever need to debug issues with the billing system. This analysis will use the detailed billing data which is stored in JSON format in the log management system.
-
-FIXME: sample raw data here
-
-Raw JSON data is processed daily by parsing out timestamped events and storing them in csv files. (NOTE: this step would actually be done as part of the data pipeline, but is done from csv to resuce the amount of data needed for this lab).
-
-FIXME: csv file
-
-### Explore the data:
-
-Show jobs over time for all users and by user
-Show age of users over time
-Show jobs that didn't complete
-
-### Use Spark SQL to transform event data into metrics:
-
-Utilization - active jobs
-
-### Use Spark to aggregate historical data within a window 
-
-Days of active use within the last 30 days
-Days since active use in the last 30 days
-Jobs with no finish after 5 hours in last 3 days
-
-### Simple anamoly detection on tranformed metrics using graphite holt-winters forecasting
-
-### What if we don't want holt-winters?  Use spark-ts package to calculate the anaomaly metric
-
-### Scale out 
-
-What if our service become extremely popular or we want to start processing data for multiple services on our platform?  We can use spark to scale out by partitioning our data across multiple spark workers.
-
-### Speed up with Streams 
-
-What if we want to decrease the time interval that we use to process data from daily down to every minute?
-
-## Scenario 2: Log monitoring
-
-Annette is an Operations Engineer for the mini-spark service.  She knows that often the first sign there is a problem with the service comes when there is either excessive logging from one or more of the micro-services that compose her service or the logs suddenly go "silent".  She wants an alert when the logging rate for her service goes above or below a threshold or is anomalous for the for the time of day.
-
-### The data
-
-All of the log data for the service passes through parsers which transform the data into the following format.  
-
-### Explore the data:
-
-
-### Use Spark SQL to transform event data into metrics:
-
-Calculates the logging rate at fixed intervals.
-
-### Set fixed upper and lower bounds - visualize in grafana
-
-### Do anomaly detection using holt-winters in graphite
-
-### Do anomlaly detection using ARIMA in spark-ts
-
-
-
-
