@@ -10,7 +10,7 @@ if __name__ == '__main__':
 
     create_dashboard = False
 
-    datasource_json = {'name':'ic2017','type':'graphite','url':'http://localhost:80','access':'direct','basicAuth':False, 'isDefault':True}
+    datasource_json = {'name':'ic2017','type':'graphite','url':'http://localhost:80','access':'proxy','basicAuth':False, 'isDefault':True}
     request = 'http://'+GRAFANA_SERVER+':'+GRAFANA_PORT+'/api/datasources'
 
     print ('Creating graphite datasource in grafana '+request+str(datasource_json) )
