@@ -1,5 +1,8 @@
 # 9005 Demonstrate Monitoring, Alerting and Predictive analytics for IBM Bluemix Cloud Services using Spark
 
+Inline-style: 
+![alerts woth Spark](https://github.com/aburkleaux/ic2017-spark-monitoring-and-alerting/images/g-forecasts.png "Metrics with Spark")
+
 This tutorial will demonstrate using Apache Spark in monitoring and alerting workflows for a cloud SaaS.  At the end of this tutorial you will be able to:
 * understand a typical monitoring and alerting workflow
 * understand how some of the features of Spark can fit into monitoring and analytic workflows
