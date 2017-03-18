@@ -152,6 +152,11 @@
                         },
                         {
                             "alias": "ic2017.usage.u-Michelle.jobcount"
+                        },
+                        {
+                            "alias": "holtWintersConfidenceUpper(keepLastValue(ic2017.usage.u-Robert.jobcount))",
+                            "fillBelowTo": "holtWintersConfidenceLower(keepLastValue(ic2017.usage.u-Robert.jobcount))",
+                            "lines": false
                         }
                     ],
                     "span": 6,
@@ -160,17 +165,17 @@
                     "targets": [
                         {
                             "refId": "A",
-                            "target": "ic2017.usage.$user.$metric"
+                            "target": "ic2017.usage.$user.jobcount"
                         },
                         {
                             "refId": "B",
-                            "target": "holtWintersConfidenceBands(keepLastValue(ic2017.usage.$user.$metric, 100), 10)"
+                            "target": "holtWintersConfidenceBands(keepLastValue(ic2017.usage.$user.jobcount, 100), 5)"
                         }
                     ],
                     "thresholds": [ ],
                     "timeFrom": null,
                     "timeShift": null,
-                    "title": "Holt-Winter Forecast ($metric) for user $user",
+                    "title": "Holt-Winter Forecast jobcount for user $user",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -387,7 +392,7 @@
                     ],
                     "timeFrom": null,
                     "timeShift": null,
-                    "title": "Holt-Winters Aberration (jobcount) user u-Michelle (threshold = +-5)",
+                    "title": "Holt-Winters Aberration (jobcount) user $user (threshold = +-5)",
                     "tooltip": {
                         "shared": true,
                         "sort": 0,
@@ -437,8 +442,8 @@
                 "allValue": null,
                 "current": {
                     "tags": [ ],
-                    "text": "u-Michelle",
-                    "value": "u-Michelle"
+                    "text": "u-Robert",
+                    "value": "u-Robert"
                 },
                 "datasource": "ic2017",
                 "hide": 0,
@@ -448,52 +453,17 @@
                 "name": "user",
                 "options": [
                     {
-                        "selected": true,
+                        "selected": false,
                         "text": "u-Michelle",
                         "value": "u-Michelle"
+                    },
+                    {
+                        "selected": true,
+                        "text": "u-Robert",
+                        "value": "u-Robert"
                     }
                 ],
                 "query": "ic2017.usage.*",
-                "refresh": 0,
-                "regex": "",
-                "sort": 0,
-                "tagValuesQuery": "",
-                "tags": [ ],
-                "tagsQuery": "",
-                "type": "query",
-                "useTags": false
-            },
-            {
-                "allValue": null,
-                "current": {
-                    "tags": [ ],
-                    "text": "jobcount",
-                    "value": "jobcount"
-                },
-                "datasource": "ic2017",
-                "hide": 0,
-                "includeAll": false,
-                "label": null,
-                "multi": false,
-                "name": "metric",
-                "options": [
-                    {
-                        "selected": false,
-                        "text": "avg_utilization",
-                        "value": "avg_utilization"
-                    },
-                    {
-                        "selected": true,
-                        "text": "jobcount",
-                        "value": "jobcount"
-                    },
-                    {
-                        "selected": false,
-                        "text": "weekly_liveness",
-                        "value": "weekly_liveness"
-                    }
-                ],
-                "query": "ic2017.usage.*.*",
                 "refresh": 0,
                 "regex": "",
                 "sort": 0,
@@ -536,6 +506,6 @@
     },
     "timezone": "browser",
     "title": "ic2017-grafana-usage",
-    "version": 2
+    "version": 5
 
 }
