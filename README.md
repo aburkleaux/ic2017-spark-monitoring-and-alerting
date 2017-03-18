@@ -24,4 +24,3 @@ Prashant is a Customer Success Manager for the (fictional) CloudKat service on B
 * a users utilization of the service approaches the limit for their current plan
 * a user has a change in usage pattern that decreases the use of their service
 * a user has actively used the service for certain number of days
-* a user has experienced a high number of problems using the service
