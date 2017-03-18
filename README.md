@@ -1,7 +1,7 @@
 # Hands-on Lab Session 9005
 ## Demonstrate Monitoring, Alerting and Predictive analytics for IBM Bluemix Cloud Services using Spark
 
-![alerts with Spark](https://github.com/aburkleaux/ic2017-spark-monitoring-and-alerting/blob/master/images/g-forecasts.png "Metrics with Spark")
+![alerts with Spark](https://github.com/aburkleaux/ic2017-spark-monitoring-and-alerting/blob/master/images/g-forecasting-robert.png "Metrics with Spark")
 
 **Overview**
 
@@ -24,4 +24,15 @@ Prashant is a Customer Success Manager for the (fictional) CloudKat service on B
 * a users utilization of the service approaches the limit for their current plan
 * a user has a change in usage pattern that decreases the use of their service
 * a user has actively used the service for certain number of days
-* a user has experienced a high number of problems using the service
+
+**Data Flow for analytic processing**
+
+We'll be showing tranforming timestamped event data using Spark in a Zeppelin notebook and creating Holt-Winters Forecasts using graphite and grafana.  The general analytic workflow this might fit into looks like this:
+
+![alerts with Spark](https://github.com/aburkleaux/ic2017-spark-monitoring-and-alerting/blob/master/images/dataflow.png "Dataflow")
+
+1. Data is ingested through a log management system such as Logstash in and ELK stack and written to a persistent message BUS such as Kafka.  
+2. Event data is processed from the stream to be stored or passed to downstream processiong.  
+3. Once the data is persisited, it can be accessed by batch jobs or applications.  Some batch jobs may create results that will also be persisted in the data store.  We will show an example of such a job in the notebook.
+
+Spark can serve the processing engine for streaming an stored data from every datasource.
