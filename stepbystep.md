@@ -38,8 +38,9 @@ From the Zeppelin tab in you browser:
 
 #### How to use Zeppelin
 
-Execute cells using **Shift+Enter**
-Add a cell by clicking on the '+' character between cells
+* Execute cells using **Shift+Enter**
+* Add a cell by clicking on the '+' character between cells
+
 The first line of each cell tells Zeppelin what language you are going to use.  
 
 * %md for markdown
@@ -65,10 +66,11 @@ The grafana dashboard shows how you can use the [graphite Holt-Winters](http://g
 
 5. The dashboard titled ic2017-grafana-usage should now be loaded in your browser.  
 
-The dashboard visualizes the metrics we generated in the notebook, along with a Holt-Winters predictive model of the expected values of the timeseries.  
-You can zoom in and out by adjusting the timepicker in the upper right corner of the dashboard.
-Click on the title bar of each graph to see how the graph was implemented using the metrics we stored in graphite and the graphite API.
-You can also toggle between different users using the users button at the top of the dashboard.
+The dashboard visualizes the metrics we generated in the notebook, along with a Holt-Winters predictive model of the expected values of the timeseries.
+
+* You can zoom in and out by adjusting the timepicker in the upper right corner of the dashboard.
+* Click on the title bar of each graph to see how the graph was implemented using the metrics we stored in graphite and the graphite API.
+* You can also toggle between different users using the users button at the top of the dashboard.
  
 
 
