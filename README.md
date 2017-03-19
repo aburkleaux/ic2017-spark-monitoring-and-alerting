@@ -7,6 +7,10 @@
 
 This lab will take you through a simplified scenario for monitoring usage of a cloud service.  It will demonstrate the workflow using Spark to tranform any kind of timestamped data into metrics. We will also look at how the metrics can be used as the basis for creating alerts on usage and forecasting usage behavior for our service.
 
+**Step by Step Lab Instructions**
+
+[Follow these instructions to do the lab!!](https://github.com/aburkleaux/ic2017-spark-monitoring-and-alerting/blob/master/stepbystep.md)
+
 **Tools Used**
 
 * **Apache Zeppelin** - is a web-based notebook that enables interactive data analytics. You can make beautiful data-driven, interactive and collaborative documents with SQL, Scala and more. Official Website for Apache Zeppelin is http://zeppelin.apache.org [ref](zeppelin-project.org/)
